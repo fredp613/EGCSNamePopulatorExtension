@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
+  <Solutions>
+    <Solution Assembly="NamePopulatorExtension.Plugins.dll" Id="f9838b5e-009a-e611-93fe-06a5b6453db2" IsolationMode="Sandbox" SourceType="Database">
+      <PluginTypes>
+        <Plugin Description="Plug-in to PostFieldNamePopulatorCreate" FriendlyName="PostFieldNamePopulatorCreate" Name="NamePopulatorExtension.Plugins.PostFieldNamePopulatorCreate" Id="fc838b5e-009a-e611-93fe-06a5b6453db2" TypeName="NamePopulatorExtension.Plugins.PostFieldNamePopulatorCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostFieldNamePopulatorCreate" Description="Post-Operation of Field Name Populator Create" Id="ffd613bc-009a-e611-93fe-06a5b6453db2" MessageName="Create" Mode="Synchronous" PrimaryEntityName="fp_fieldnamepopulator" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image Attributes="fp_name,fp_fieldnames" EntityAlias="names" Id="02d713bc-009a-e611-93fe-06a5b6453db2" MessagePropertyName="id" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostFieldNamePopulatorUpdate" FriendlyName="PostFieldNamePopulatorUpdate" Name="NamePopulatorExtension.Plugins.PostFieldNamePopulatorUpdate" Id="01848b5e-009a-e611-93fe-06a5b6453db2" TypeName="NamePopulatorExtension.Plugins.PostFieldNamePopulatorUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostFieldNamePopulatorUpdate" Description="Post-Operation of Field Name Populator Update" Id="03d713bc-009a-e611-93fe-06a5b6453db2" MessageName="Update" Mode="Synchronous" PrimaryEntityName="fp_fieldnamepopulator" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image Attributes="fp_name,fp_fieldnames" EntityAlias="names" Id="06d713bc-009a-e611-93fe-06a5b6453db2" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreFieldNamePopulatorDelete" FriendlyName="PreFieldNamePopulatorDelete" Name="NamePopulatorExtension.Plugins.PreFieldNamePopulatorDelete" Id="07d713bc-009a-e611-93fe-06a5b6453db2" TypeName="NamePopulatorExtension.Plugins.PreFieldNamePopulatorDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreFieldNamePopulatorDelete" Description="Pre-Operation of Field Name Populator Delete" Id="08d713bc-009a-e611-93fe-06a5b6453db2" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="fp_fieldnamepopulator" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image Attributes="fp_name,fp_fieldnames" EntityAlias="names" Id="0bd713bc-009a-e611-93fe-06a5b6453db2" MessagePropertyName="Target" ImageType="PreImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+      </PluginTypes>
+    </Solution>
+  </Solutions>
+  <XamlWorkflows />
+</Register>

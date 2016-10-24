@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrmPackage", "NamePopulatorExtension\CrmPackage\CrmPackage.csproj", "{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3A9083B0-90FA-402E-A0E6-99B39544FF03} = {3A9083B0-90FA-402E-A0E6-99B39544FF03}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins", "NamePopulatorExtension\Plugins\Plugins.csproj", "{3A9083B0-90FA-402E-A0E6-99B39544FF03}"
+EndProject
+Global
+	GlobalSection(CRMSolutionProperties) = preSolution
+		SolutionIsBoundToCRM = True
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CDCCD8C-EC3F-415D-B7D6-DBE3B6B0B0DC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3A9083B0-90FA-402E-A0E6-99B39544FF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9083B0-90FA-402E-A0E6-99B39544FF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9083B0-90FA-402E-A0E6-99B39544FF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9083B0-90FA-402E-A0E6-99B39544FF03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
