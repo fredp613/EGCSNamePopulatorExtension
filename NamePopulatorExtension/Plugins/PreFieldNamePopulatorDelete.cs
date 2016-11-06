@@ -49,7 +49,7 @@ namespace NamePopulatorExtension.Plugins
             {
                 // Obtain the target entity from the input parameters.
                 EntityReference entityRef = (EntityReference)context.InputParameters["Target"];
-                Entity preEntity = (Entity)context.PreEntityImages["fp_name"];
+                Entity preEntity = (Entity)context.PreEntityImages["names"];
                 var entityName = preEntity.GetAttributeValue<string>("fp_name");
 
                 if (entityRef.LogicalName != "fp_fieldnamepopulator")
@@ -58,8 +58,6 @@ namespace NamePopulatorExtension.Plugins
                 try
                 {
                     var populator = new Populator(service, entityName);
-
-
 
                     if (!populator.destroyPluginSteps())
                     {

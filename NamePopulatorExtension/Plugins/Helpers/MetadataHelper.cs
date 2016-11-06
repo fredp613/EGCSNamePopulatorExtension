@@ -21,6 +21,11 @@ namespace Helpers
             _service = service;
         }
 
+        public MetadataHelper()
+        {
+            // TODO: Complete member initialization
+        }
+
         public int? getMaxLength(string stringFieldName) {
                         
             RetrieveAttributeRequest attributeRequest = new RetrieveAttributeRequest
@@ -52,6 +57,72 @@ namespace Helpers
             entityRequest.LogicalName = _entity.LogicalName;
 
             RetrieveEntityResponse entityResponse = (RetrieveEntityResponse)_service.Execute(entityRequest);
+            if (entityResponse != null)
+            {
+                return entityResponse.EntityMetadata.ObjectTypeCode.Value;
+            }
+            return null;
+        }
+
+
+        public static Boolean ValidateExistence(string entityToVerify, IOrganizationService service, string fieldNames = null)
+        {
+
+            var meta = new MetadataHelper
+            {
+                _service = service
+
+            };
+
+            if (!EntityExists(entityToVerify, meta._service))
+            {                
+                return false;
+            }
+            else
+            {
+                if (fieldNames == null)
+                {
+                    return true;
+                }
+                else
+                {                   
+                    char[] comma = { ',' };
+                    var fieldNameArr = fieldNames.ToString().Split(comma).ToList();
+                 
+                    foreach (var fn in fieldNameArr)
+                    {
+
+                        if (FieldNameExists(entityToVerify, meta._service, fn.ToString()) == null)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+           
+
+        }
+
+        private static Boolean EntityExists(string entityToVerify, IOrganizationService service)
+        {
+            RetrieveEntityRequest entityRequest = new RetrieveEntityRequest();
+            entityRequest.LogicalName = entityToVerify;
+           
+            RetrieveEntityResponse entityResponse = (RetrieveEntityResponse)service.Execute(entityRequest);
+            if (entityResponse != null)
+            {                   
+                return true;
+            }
+            return false;
+        }
+
+        private static int? FieldNameExists(string entityToVerify, IOrganizationService service, string fieldName)
+        {
+            RetrieveEntityRequest entityRequest = new RetrieveEntityRequest();
+            entityRequest.LogicalName = entityToVerify;
+
+            RetrieveEntityResponse entityResponse = (RetrieveEntityResponse)service.Execute(entityRequest);
             if (entityResponse != null)
             {
                 return entityResponse.EntityMetadata.ObjectTypeCode.Value;

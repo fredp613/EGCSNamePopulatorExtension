@@ -102,15 +102,17 @@ namespace NamePopulatorExtension.Plugins
                               
                                 if (entityToUse.Attributes[fn] is EntityReference)
                                 {
+                                    tracingService.Trace("pub prefix {0}", publisherPrefix);
                                     var refId = entityToUse.GetAttributeValue<EntityReference>(fn).Id;
+                                    tracingService.Trace("ref ID {0}", refId);
                                     var nameToUseOfContext = nameToUse;
-                                    if (fn == "egcs_contact")
+                                    if (fn == "contact")
                                     {
                                         fn = "contact";
                                         nameToUseOfContext = "fullname";                                        
                                     }
                                     
-                                    if (fn == "egcs_account")
+                                    if (fn == "account")
                                     {
                                         fn = "account";
                                         nameToUseOfContext = "name";
@@ -195,11 +197,11 @@ namespace NamePopulatorExtension.Plugins
                             entity[publisherPrefix + "_name"] = newStr;
                         }
 
-                        if (context.MessageName.ToUpper() == "UPDATE")
-                        {
+                      //  if (context.MessageName.ToUpper() == "UPDATE")
+                      //  {
                             if (context.Depth > 1) { return; }
                             service.Update(entity);
-                        }
+                      //  }
 
                     }
 
@@ -233,8 +235,8 @@ namespace FredPearson
 
         public bool generatePluginSteps() {
             FaultException ex1 = new FaultException();
-            
-            Guid plug = new PluginGenerator(_service, "NamePopulatorExtension.Plugins", _entityName, "NamePopulatorExtension.Plugins.PopulatorPlugin", (int)CrmPluginStepStage.PreValidation,
+            //CHECK IF ENTITY FP NAME, AND ITS FIELD NAMES ARE VALID!!! 
+            Guid plug = new PluginGenerator(_service, "NamePopulatorExtension.Plugins", _entityName, "NamePopulatorExtension.Plugins.PopulatorPlugin", (int)CrmPluginStepStage.PostOperation,
                 "create step for name populator plugin for entity: " + _entityName, SdkMessageName.Create.ToString(),
                 "Create plugin populator", "update name field on create").generatePluginStep();
             //throw new InvalidPluginExecutionException(plug.ToString(), ex1);

@@ -47,6 +47,12 @@ namespace NamePopulatorExtension.Plugins
                 try
                 {
                     var entityForPlugin = entity.GetAttributeValue<string>("fp_name").ToString();
+                    var fieldNames = entity.GetAttributeValue<string>("fp_fieldnames").ToString();
+             
+                    if (!MetadataHelper.ValidateExistence(entityForPlugin, service, fieldNames))
+                    {
+                        throw new InvalidPluginExecutionException("Entity or fields don't exist", ex1);
+                    }
 
                     if (!new Populator(service, entityForPlugin).generatePluginSteps())
                     {
